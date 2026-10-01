@@ -1,0 +1,19 @@
+import fitz
+
+
+def extract_text_from_pdf(file_path):
+    """
+    Extract text from all pages of a PDF.
+    """
+
+    document = fitz.open(file_path)
+
+    pages_text = []
+
+    for page in document:
+        text = page.get_text()
+        pages_text.append(text)
+
+    document.close()
+
+    return "\n".join(pages_text)
